@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: oyo
+Build-Jdk: 11.0.1
+Implementation-Title: StaffManagementRole
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: io.javabrains
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
+ -starter-parent/StaffManagementRole
+Created-By: Maven Integration for Eclipse
+
