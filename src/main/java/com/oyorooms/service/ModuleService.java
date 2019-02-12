@@ -45,6 +45,10 @@ public class ModuleService {
 		}
 
 	}
+	
+	public Long findIdByName(String name) {
+		return roleEntityRepository.findIdByName(name);
+	}
 
 	public List<ModuleDTO> getModules(Long roleId) {
 

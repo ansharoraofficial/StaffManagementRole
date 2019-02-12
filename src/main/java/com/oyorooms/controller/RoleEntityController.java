@@ -35,19 +35,19 @@ public class RoleEntityController {
 		return roleEntityService.getAllRoles();
 	}
 
-	@RequestMapping(value = "/role/{id}")
-	public RoleEntity getRoleById(@PathVariable Long id) {
-		return roleEntityService.getRoleById(id);
+	@RequestMapping(value = "/role/{roleName}")
+	public RoleEntity getRoleByName(@PathVariable String roleName) {
+		return roleEntityService.getRoleByName(roleName);
 	}
 
-	@PutMapping(value = "/role/{id}")
-	public void updateRoleEntity(@PathVariable Long id, @Valid @RequestBody UpdatedRoleEntity roleEntity) {
-		roleEntityService.updateRoleEntity(id, roleEntity);
+	@PutMapping(value = "/role/{roleName}")
+	public void updateRoleEntity(@PathVariable String roleName, @Valid @RequestBody UpdatedRoleEntity roleEntity) {
+		roleEntityService.updateRoleEntity(roleName, roleEntity);
 	}
 
-	@DeleteMapping(value = "/role/{id}")
-	public String deleteRole(@PathVariable Long id) {
-		return roleEntityService.deleteRole(id);
+	@DeleteMapping(value = "/role/{roleName}")
+	public String deleteRole(@PathVariable String roleName) {
+		return roleEntityService.deleteRole(roleName);
 	}
 
 }

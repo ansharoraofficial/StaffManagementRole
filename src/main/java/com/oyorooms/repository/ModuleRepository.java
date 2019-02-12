@@ -26,6 +26,9 @@ public interface ModuleRepository extends JpaRepository<Module, Long> {
 	@Query(value = "select m.id from module m where m.module_name=:moduleName and m.role_entity_id=:id", nativeQuery = true)
 	Long getModuleIdByName(@Param("moduleName") String moduleName, @Param("id") Long id);
 
+//	@Query(value = "select distinct m from module m where module_name = ?1")
+//	Optional<Module> findByName(String moduleName);
+
 //	@Query(value = "select m from module m where m.module_name = :moduleName limit 1", nativeQuery = true)
 //	Module findActionsByModuleName(@Param("moduleName") String moduleName);
 }

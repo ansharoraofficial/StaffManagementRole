@@ -42,6 +42,10 @@ public class RoleEntityService {
 			}
 		}
 	}
+	
+	Long findIdByName(String name) {
+		return roleEntityRepository.findIdByName(name);
+	}
 
 	@Transactional
 	private RoleEntity addRoleEntity(UpdatedRoleEntity roleObj) {
@@ -66,18 +70,23 @@ public class RoleEntityService {
 		return roleEntityDTO;
 	}
 
-	public RoleEntity getRoleById(Long id) {
+	public RoleEntity getRoleByName(String roleName) {
+		Long id = findIdByName(roleName);
+		if(id == null) return null;
+		
 		Optional<RoleEntity> roleId = roleEntityRepository.findById(id);
 		if (roleId.isPresent()) {
 			return roleId.get();
 		} else {
-			throw new NotFoundException("Role Not found with Id " + id);
+			throw new NotFoundException("Role Not found with name " + roleName);
 		}
 
 	}
 
-	public void updateRoleEntity(Long id, @Valid UpdatedRoleEntity roleEntity) {
+	public void updateRoleEntity(String roleName, @Valid UpdatedRoleEntity roleEntity) {
 
+		Long id = findIdByName(roleName);
+		if(id == null) return;
 		Optional<RoleEntity> role = roleEntityRepository.findById(id);
 		if (role.isPresent()) {
 			
@@ -109,8 +118,10 @@ public class RoleEntityService {
 		}
 	}
 
-	public String deleteRole(Long id) {
+	public String deleteRole(String roleName) {
 
+		Long id = findIdByName(roleName);
+		if(id == null) return null;
 		return roleEntityRepository.findById(id).map(role -> {
 			roleEntityRepository.delete(role);
 			return "Deleted Successfully";
